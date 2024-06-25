@@ -1,0 +1,164 @@
+-- Function to load the new main script
+local function loadMainScript()
+    loadstring(game:HttpGet("https://pastebin.com/raw/PhKE9BVe"))()
+end
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "AwakenGui"
+screenGui.ResetOnSpawn = false
+
+-- Helper function to create styled buttons
+local function createButton(text, position)
+    local button = Instance.new("TextButton")
+    button.Text = text
+    button.Size = UDim2.new(0.8, 0, 0.1, 0)
+    button.Position = position
+    button.BackgroundTransparency = 0.5
+    button.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+    button.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+    button.Font = Enum.Font.SourceSans
+    button.TextScaled = true
+    
+    local uiCorner = Instance.new("UICorner", button)
+    uiCorner.CornerRadius = UDim.new(0, 10)
+    
+    local uiStroke = Instance.new("UIStroke", button)
+    uiStroke.Color = Color3.fromRGB(0, 0, 0) -- Black outline
+    uiStroke.Thickness = 2
+    
+    return button, uiStroke
+end
+
+-- Main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
+mainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
+mainFrame.BackgroundTransparency = 0.5
+mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+mainFrame.Visible = true
+mainFrame.Parent = screenGui
+
+local uiCornerMain = Instance.new("UICorner", mainFrame)
+uiCornerMain.CornerRadius = UDim.new(0, 10)
+
+local uiStrokeMain = Instance.new("UIStroke", mainFrame)
+uiStrokeMain.Color = Color3.fromRGB(0, 0, 0) -- Black outline
+uiStrokeMain.Thickness = 2
+
+-- Title Label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Text = "Awaken 2.0"
+titleLabel.Size = UDim2.new(1, 0, 0.1, 0)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.BackgroundTransparency = 1
+titleLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextScaled = true
+titleLabel.Parent = mainFrame
+
+-- Credits Label
+local creditsLabel = Instance.new("TextLabel")
+creditsLabel.Text = "Credits: Awaken/discord: https://discord.com/invite/FkmbuKb9"
+creditsLabel.Size = UDim2.new(1, 0, 0.1, 0)
+creditsLabel.Position = UDim2.new(0, 0, 0.9, 0)
+creditsLabel.BackgroundTransparency = 1
+creditsLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+creditsLabel.Font = Enum.Font.SourceSans
+creditsLabel.TextScaled = true
+creditsLabel.Parent = mainFrame
+
+-- Close Button
+local closeButton = Instance.new("TextButton")
+closeButton.Text = "✒️"
+closeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+closeButton.Position = UDim2.new(0.9, 0, 0, 0)
+closeButton.BackgroundTransparency = 0.5
+closeButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+closeButton.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+closeButton.Font = Enum.Font.SourceSansBold
+closeButton.TextScaled = true
+closeButton.Parent = mainFrame
+
+local uiCornerClose = Instance.new("UICorner", closeButton)
+uiCornerClose.CornerRadius = UDim.new(0, 10)
+
+local uiStrokeClose = Instance.new("UIStroke", closeButton)
+uiStrokeClose.Color = Color3.fromRGB(0, 0, 0) -- Black outline
+uiStrokeClose.Thickness = 2
+
+-- Minimize Button
+local minimizeButton = Instance.new("TextButton")
+minimizeButton.Text = "_"
+minimizeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+minimizeButton.Position = UDim2.new(0.8, 0, 0, 0)
+minimizeButton.BackgroundTransparency = 0.5
+minimizeButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+minimizeButton.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+minimizeButton.Font = Enum.Font.SourceSansBold
+minimizeButton.TextScaled = true
+minimizeButton.Parent = mainFrame
+
+local uiCornerMinimize = Instance.new("UICorner", minimizeButton)
+uiCornerMinimize.CornerRadius = UDim.new(0, 10)
+
+local uiStrokeMinimize = Instance.new("UIStroke", minimizeButton)
+uiStrokeMinimize.Color = Color3.fromRGB(0, 0, 0) -- Black outline
+uiStrokeMinimize.Thickness = 2
+
+-- Toggle GUI visibility function
+local function toggleGui()
+    mainFrame.Visible = not mainFrame.Visible
+end
+
+-- Close Button functionality
+closeButton.MouseButton1Click:Connect(toggleGui)
+
+-- Minimize Button functionality
+minimizeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+end)
+
+-- Open Button (for reopening GUI)
+local openButton = Instance.new("TextButton")
+openButton.Text = "✒️"
+openButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+openButton.Position = UDim2.new(0.45, 0, 0.02, 0)  -- Positioned at the top center
+openButton.BackgroundTransparency = 0.5
+openButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+openButton.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text
+openButton.Font = Enum.Font.SourceSansBold
+openButton.TextScaled = true
+openButton.Parent = screenGui
+
+local uiCornerOpen = Instance.new("UICorner", openButton)
+uiCornerOpen.CornerRadius = UDim.new(0, 10)
+
+local uiStrokeOpen = Instance.new("UIStroke", openButton)
+uiStrokeOpen.Color = Color3.fromRGB(0, 0, 0) -- Black outline
+uiStrokeOpen.Thickness = 2
+
+-- Open Button functionality
+openButton.MouseButton1Click:Connect(toggleGui)
+
+-- Camlock Toggle Button
+local camlockButton, camlockStroke = createButton("Camlock", UDim2.new(0.1, 0, 0.1, 20)) -- Positioned slightly below the top left corner
+camlockButton.Parent = mainFrame
+
+local isCamlockEnabled = false
+
+-- Function to toggle Camlock
+local function toggleCamlock()
+    isCamlockEnabled = not isCamlockEnabled
+    camlockButton.Text = isCamlockEnabled and "Camlock ON" or "Camlock"
+    camlockStroke.Thickness = isCamlockEnabled and 6 or 2 -- Thicker outline when enabled
+    if isCamlockEnabled then
+        loadMainScript() -- Call your script loading function here
+    end
+end
+
+-- Connect Camlock button to functionality
+camlockButton.MouseButton1Click:Connect(toggleCamlock)
+
+-- Parent the ScreenGui to PlayerGui
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
